@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+    %}
+    <h1 align="center">CODES</h1>
+    <ul class="list-group">
+        {% for item in codes%}
+        <div class="container">
+        <div class="row row-cols-auto">
+          <div class="col-10"><li class="list-group-item">{{ item.text }}</li></div>
+          <div class="col"><form method="POST" action="/edit-code">
+            <input type="hidden" name="edit" value="{{ item._id }}" />
+            <button type="submit" class="btn btn-primary btn-sm">Edit</button>
+        </form></div>
+        <div class="col"><form method="POST" action="/delete-code">
+            <input type="hidden" name="delete" value="{{ item._id }}" />
+            <button type="submit" class="btn btn-danger btn-sm" >Delete</button>
+        </form></div>
+      </div>
+      </div>
+      <br/>
+        {% endfor %}
+    </ul>
+    <br/><br/>
+    <form method="POST" action="{{ url_for('add_code')}}">
+      <textarea class="form-control" name="code" id="code"></textarea>
+      <br />
+      <div align="center">
+        <button type="submit" class="btn btn-info btn-lg">Add Code</button>
+      </div>
+    </form>
+    {% endblock %}

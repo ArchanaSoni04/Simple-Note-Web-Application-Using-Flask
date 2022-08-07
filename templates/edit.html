@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block title %}Edit Code{% endblock %} 
+{% block content %}
+<br/><br/>
+<form method="POST" action="{{url_for('update_code')}}">
+    <input type="hidden" name="edited" value="{{ code._id }}" />
+    <textarea class="form-control" rows="15" name="edited_code" id="edited_code" >{{code.text}}</textarea>
+    <br />
+    <div align="center">
+        
+      <button type="submit" class="btn btn-info btn-lg">Save Code</button>
+    </div>
+  </form>
+{% endblock %}
